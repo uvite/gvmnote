@@ -1,0 +1,31 @@
+{
+  "ID": 4605,
+  "CreatedAt": "2023-03-12T18:02:57.048+08:00",
+  "UpdatedAt": "2023-03-12T18:10:53.294+08:00",
+  "level": "",
+  "route": "1",
+  "name": "机器人",
+  "code": "bot",
+  "status": 1,
+  "is_hidden": 2,
+  "component": "2",
+  "remark": "234",
+  "sort": 4,
+  "meta": {
+    "type": "",
+    "redirect": "3",
+    "icon": "IconAttachment",
+    "activeName": "",
+    "keepAlive": false,
+    "defaultMenu": false,
+    "title": "",
+    "closeTab": false
+  },
+  "authoritys": null,
+  "children": null,
+  "parameters": [],
+  "menuBtn": [],
+  "meta.type": "M",
+  "icon": "IconCloud",
+  "redirect": "234"
+}
