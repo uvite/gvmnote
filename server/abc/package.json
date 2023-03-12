@@ -1,31 +1,33 @@
 {
-  "ID": 4605,
-  "CreatedAt": "2023-03-12T18:02:57.048+08:00",
-  "UpdatedAt": "2023-03-12T18:10:53.294+08:00",
-  "level": "",
-  "route": "1",
-  "name": "机器人",
-  "code": "bot",
-  "status": 1,
-  "is_hidden": 2,
-  "component": "2",
-  "remark": "234",
-  "sort": 4,
-  "meta": {
-    "type": "",
-    "redirect": "3",
-    "icon": "IconAttachment",
-    "activeName": "",
-    "keepAlive": false,
-    "defaultMenu": false,
-    "title": "",
-    "closeTab": false
-  },
-  "authoritys": null,
-  "children": null,
-  "parameters": [],
-  "menuBtn": [],
-  "meta.type": "M",
-  "icon": "IconCloud",
-  "redirect": "234"
+  StructName: orders
+  TableName: orders
+  PackageName: vite
+  HumpPackageName: orders
+  Abbreviation: orders
+  Description: orders
+  AutoCreateApiToSql: true
+  AutoCreateResource: true
+  AutoMoveFile: false
+  BusinessDB: Fields
+  :[
+  0x14000556160
+  0x14000556210
+  0x140005562c0
+  0x14000556370
+  0x14000556420
+  0x140005564d0
+  0x14000556580
+  0x14000556630
+  0x140005566e0
+  0x14000556790
+  0x14000556840
+  0x140005568f0
+  0x140005569a0
+  0x14000556a50
+  0x14000556b00
+  0x14000556bb0
+  0x14000556c60
+  0x14000556d10
+  0x14000556dc0
+] HasTimer:false DictTypes:[] Package: PackageT: NeedValid: false NeedSort: false
 }

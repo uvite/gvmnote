@@ -26,3 +26,15 @@
 [github.com/flipped-aurora/gin-vue-admin/server]2023/03/13 - 03:00:13.328	[34minfo[0m	/pine/gvmnote/server/initialize/router.go:40	register swagger handler
 [github.com/flipped-aurora/gin-vue-admin/server]2023/03/13 - 03:00:13.330	[34minfo[0m	/pine/gvmnote/server/initialize/router.go:81	router register success
 [github.com/flipped-aurora/gin-vue-admin/server]2023/03/13 - 03:00:13.330	[34minfo[0m	/pine/gvmnote/server/core/server.go:36	server run success on 	{"address": ":7654"}
+[github.com/flipped-aurora/gin-vue-admin/server]2023/03/13 - 03:14:57.235	[34minfo[0m	/pine/gvmnote/server/initialize/gorm.go:60	register table success
+[github.com/flipped-aurora/gin-vue-admin/server]2023/03/13 - 03:14:57.238	[34minfo[0m	/pine/gvmnote/server/initialize/router.go:40	register swagger handler
+[github.com/flipped-aurora/gin-vue-admin/server]2023/03/13 - 03:14:57.242	[34minfo[0m	/pine/gvmnote/server/initialize/router.go:81	router register success
+[github.com/flipped-aurora/gin-vue-admin/server]2023/03/13 - 03:14:57.242	[34minfo[0m	/pine/gvmnote/server/core/server.go:36	server run success on 	{"address": ":7654"}
+[github.com/flipped-aurora/gin-vue-admin/server]2023/03/13 - 03:16:14.660	[34minfo[0m	/pine/gvmnote/server/initialize/gorm.go:60	register table success
+[github.com/flipped-aurora/gin-vue-admin/server]2023/03/13 - 03:16:14.665	[34minfo[0m	/pine/gvmnote/server/initialize/router.go:40	register swagger handler
+[github.com/flipped-aurora/gin-vue-admin/server]2023/03/13 - 03:16:14.668	[34minfo[0m	/pine/gvmnote/server/initialize/router.go:81	router register success
+[github.com/flipped-aurora/gin-vue-admin/server]2023/03/13 - 03:16:14.668	[34minfo[0m	/pine/gvmnote/server/core/server.go:36	server run success on 	{"address": ":7654"}
+[github.com/flipped-aurora/gin-vue-admin/server]2023/03/13 - 03:25:27.746	[34minfo[0m	/pine/gvmnote/server/initialize/gorm.go:60	register table success
+[github.com/flipped-aurora/gin-vue-admin/server]2023/03/13 - 03:25:27.751	[34minfo[0m	/pine/gvmnote/server/initialize/router.go:40	register swagger handler
+[github.com/flipped-aurora/gin-vue-admin/server]2023/03/13 - 03:25:27.753	[34minfo[0m	/pine/gvmnote/server/initialize/router.go:81	router register success
+[github.com/flipped-aurora/gin-vue-admin/server]2023/03/13 - 03:25:27.753	[34minfo[0m	/pine/gvmnote/server/core/server.go:36	server run success on 	{"address": ":7654"}

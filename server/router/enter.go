@@ -7,6 +7,7 @@ import (
 	"github.com/flipped-aurora/gin-vue-admin/server/router/other"
 	"github.com/flipped-aurora/gin-vue-admin/server/router/strages"
 	"github.com/flipped-aurora/gin-vue-admin/server/router/system"
+	"github.com/flipped-aurora/gin-vue-admin/server/router/vite"
 )
 
 type RouterGroup struct {
@@ -16,6 +17,7 @@ type RouterGroup struct {
 	Bots      bots.RouterGroup
 	Strages   strages.RouterGroup
 	Adsafasdf adsafasdf.RouterGroup
+	Vite      vite.RouterGroup
 }
 
 var RouterGroupApp = new(RouterGroup)

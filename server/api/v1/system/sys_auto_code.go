@@ -62,7 +62,7 @@ func (autoApi *AutoCodeApi) BeforeCreateTemp(c *gin.Context) {
 func (autoApi *AutoCodeApi) CoventACStruct(id int, c *gin.Context) system.AutoCodeStruct {
 	var generateTables other.SettingGenerateTables
 
-	err := global.GVA_DB.Where("id =?", id).Preload("SysDictionaryDetails").First(&generateTables).Error
+	err := global.GVA_DB.Where("id =?", id).Preload("SettingGenerateColumns").First(&generateTables).Error
 	fmt.Println(err)
 
 	ac := system.AutoCodeStruct{
@@ -98,7 +98,7 @@ func (autoApi *AutoCodeApi) CoventFields(SettingGenerateColumns []other.SettingG
 			Require:         false,
 			ErrorText:       val.ColumnName,
 			Clearable:       true,
-			Sort:            *val.Sort,
+			Sort:            true,
 		}
 		Fields = append(Fields, &ac)
 	}
@@ -109,6 +109,8 @@ func (autoApi *AutoCodeApi) CoventFields(SettingGenerateColumns []other.SettingG
 func (autoApi *AutoCodeApi) AutoTemp(a system.AutoCodeStruct, c *gin.Context) {
 
 	a.Pretreatment()
+
+	fmt.Printf("%+v", a)
 	var apiIds []uint
 	if a.AutoCreateApiToSql {
 		if ids, err := autoCodeService.AutoCreateApi(&a); err != nil {
