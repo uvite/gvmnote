@@ -73,6 +73,8 @@ func Routers() *gin.Engine {
 
 		otherRouter.InitSystemDeptRouter(PrivateGroup)
 		otherRouter.InitSystemRoleRouter(PrivateGroup)
+		otherRouter.InitSettingGenerateTablesRouter(PrivateGroup)
+		otherRouter.InitSettingGenerateColumnsRouter(PrivateGroup)
 
 	}
 

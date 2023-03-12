@@ -22,6 +22,9 @@ func (s *DictionaryRouter) InitSysDictionaryRouter(Router *gin.RouterGroup) {
 
 	}
 	{
+
+		sysDictionaryRouterWithoutRecord.GET("eplusDictionary", sysDictionaryApi.EPlusDictionary)       // 根据ID获取SysDictionary
+
 		sysDictionaryRouterWithoutRecord.GET("findSysDictionary", sysDictionaryApi.FindSysDictionary)       // 根据ID获取SysDictionary
 		sysDictionaryRouterWithoutRecord.GET("findSysDictionarys", sysDictionaryApi.FindSysDictionarys)       // 根据ID获取SysDictionary
 		sysDictionaryRouterWithoutRecord.GET("getSysDictionaryList", sysDictionaryApi.GetSysDictionaryList) // 获取SysDictionary列表

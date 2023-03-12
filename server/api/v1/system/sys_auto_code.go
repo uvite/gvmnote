@@ -3,6 +3,8 @@ package system
 import (
 	"errors"
 	"fmt"
+	"github.com/flipped-aurora/gin-vue-admin/server/model/common/request"
+	"github.com/flipped-aurora/gin-vue-admin/server/model/other"
 	"net/url"
 	"os"
 	"strings"
@@ -42,6 +44,99 @@ func (autoApi *AutoCodeApi) PreviewTemp(c *gin.Context) {
 		response.FailWithMessage("预览失败", c)
 	} else {
 		response.OkWithDetailed(gin.H{"autoCode": autoCode}, "预览成功", c)
+	}
+}
+
+func (autoApi *AutoCodeApi) BeforeCreateTemp(c *gin.Context) {
+	var IDS request.IdsReq
+	err := c.ShouldBindJSON(&IDS)
+	if err != nil {
+		response.FailWithMessage(err.Error(), c)
+		return
+	}
+	for _, val := range IDS.Ids {
+		ac := autoApi.CoventACStruct(val, c)
+		autoApi.AutoTemp(ac, c)
+	}
+}
+func (autoApi *AutoCodeApi) CoventACStruct(id int, c *gin.Context) system.AutoCodeStruct {
+	var generateTables other.SettingGenerateTables
+
+	err := global.GVA_DB.Where("id =?", id).Preload("SysDictionaryDetails").First(&generateTables).Error
+	fmt.Println(err)
+
+	ac := system.AutoCodeStruct{
+		StructName:         generateTables.Tablealias,
+		TableName:          generateTables.Tablealias,
+		PackageName:        generateTables.PackageName,
+		HumpPackageName:    generateTables.Tablealias,
+		Abbreviation:       generateTables.Tablealias,
+		Description:        generateTables.Tablealias,
+		AutoCreateApiToSql: true,
+		AutoCreateResource: true,
+		AutoMoveFile:       false,
+		BusinessDB:         "",
+		Fields:             autoApi.CoventFields(generateTables.SettingGenerateColumns, c),
+	}
+	return ac
+}
+
+func (autoApi *AutoCodeApi) CoventFields(SettingGenerateColumns []other.SettingGenerateColumns, c *gin.Context) []*system.Field {
+	var Fields []*system.Field
+
+	for _, val := range SettingGenerateColumns {
+		ac := system.Field{
+			FieldName:       val.ColumnName,
+			FieldDesc:       val.ColumnComment,
+			FieldType:       val.ColumnType,
+			FieldJson:       val.ColumnName,
+			DataTypeLong:    val.ColumnComment,
+			Comment:         val.ColumnComment,
+			ColumnName:      val.ColumnName,
+			FieldSearchType: val.ColumnName,
+			DictType:        val.ColumnName,
+			Require:         false,
+			ErrorText:       val.ColumnName,
+			Clearable:       true,
+			Sort:            *val.Sort,
+		}
+		Fields = append(Fields, &ac)
+	}
+
+	return Fields
+}
+
+func (autoApi *AutoCodeApi) AutoTemp(a system.AutoCodeStruct, c *gin.Context) {
+
+	a.Pretreatment()
+	var apiIds []uint
+	if a.AutoCreateApiToSql {
+		if ids, err := autoCodeService.AutoCreateApi(&a); err != nil {
+			global.GVA_LOG.Error("自动化创建失败!请自行清空垃圾数据!", zap.Error(err))
+			c.Writer.Header().Add("success", "false")
+			c.Writer.Header().Add("msg", url.QueryEscape("自动化创建失败!请自行清空垃圾数据!"))
+			return
+		} else {
+			apiIds = ids
+		}
+	}
+	a.PackageT = utils.FirstUpper(a.Package)
+	err := autoCodeService.CreateTemp(a, apiIds...)
+	if err != nil {
+		if errors.Is(err, system.ErrAutoMove) {
+			c.Writer.Header().Add("success", "true")
+			c.Writer.Header().Add("msg", url.QueryEscape(err.Error()))
+		} else {
+			c.Writer.Header().Add("success", "false")
+			c.Writer.Header().Add("msg", url.QueryEscape(err.Error()))
+			_ = os.Remove("./ginvueadmin.zip")
+		}
+	} else {
+		c.Writer.Header().Add("Content-Disposition", fmt.Sprintf("attachment; filename=%s", "ginvueadmin.zip")) // fmt.Sprintf("attachment; filename=%s", filename)对下载的文件重命名
+		c.Writer.Header().Add("Content-Type", "application/json")
+		c.Writer.Header().Add("success", "true")
+		c.File("./ginvueadmin.zip")
+		_ = os.Remove("./ginvueadmin.zip")
 	}
 }
 
@@ -104,6 +199,8 @@ func (autoApi *AutoCodeApi) CreateTemp(c *gin.Context) {
 func (autoApi *AutoCodeApi) GetDB(c *gin.Context) {
 	businessDB := c.Query("businessDB")
 	dbs, err := autoCodeService.Database(businessDB).GetDB(businessDB)
+
+	fmt.Println("fuck", err)
 	var dbList []map[string]interface{}
 	for _, db := range global.GVA_CONFIG.DBList {
 		var item = make(map[string]interface{})

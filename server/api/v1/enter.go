@@ -1,6 +1,7 @@
 package v1
 
 import (
+	"github.com/flipped-aurora/gin-vue-admin/server/api/v1/bots"
 	"github.com/flipped-aurora/gin-vue-admin/server/api/v1/example"
 	"github.com/flipped-aurora/gin-vue-admin/server/api/v1/other"
 	"github.com/flipped-aurora/gin-vue-admin/server/api/v1/system"
@@ -9,7 +10,8 @@ import (
 type ApiGroup struct {
 	SystemApiGroup  system.ApiGroup
 	ExampleApiGroup example.ApiGroup
-	OtherApiGroup other.ApiGroup
+	OtherApiGroup   other.ApiGroup
+	BotsApiGroup    bots.ApiGroup
 }
 
 var ApiGroupApp = new(ApiGroup)

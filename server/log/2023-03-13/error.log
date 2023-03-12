@@ -1,0 +1,10 @@
+[github.com/flipped-aurora/gin-vue-admin/server]2023/03/13 - 00:55:11.144	[31merror[0m	/pine/gvmnote/server/core/server.go:43	accept tcp [::]:7654: use of closed network connection
+[github.com/flipped-aurora/gin-vue-admin/server]2023/03/13 - 00:59:52.971	[31merror[0m	/pine/gvmnote/server/core/server.go:43	accept tcp [::]:7654: use of closed network connection
+[github.com/flipped-aurora/gin-vue-admin/server]2023/03/13 - 01:09:00.578	[31merror[0m	/pine/gvmnote/server/api/v1/other/setting_generate_tables.go:161	查询失败!	{"error": "record not found"}
+[github.com/flipped-aurora/gin-vue-admin/server]2023/03/13 - 01:09:15.797	[31merror[0m	/pine/gvmnote/server/api/v1/other/setting_generate_tables.go:161	查询失败!	{"error": "record not found"}
+[github.com/flipped-aurora/gin-vue-admin/server]2023/03/13 - 01:11:18.025	[31merror[0m	/pine/gvmnote/server/api/v1/other/setting_generate_tables.go:161	查询失败!	{"error": "record not found"}
+[github.com/flipped-aurora/gin-vue-admin/server]2023/03/13 - 01:14:51.423	[31merror[0m	/pine/gvmnote/server/core/server.go:43	accept tcp [::]:7654: use of closed network connection
+[github.com/flipped-aurora/gin-vue-admin/server]2023/03/13 - 01:43:21.591	[31merror[0m	/pine/gvmnote/server/core/server.go:43	accept tcp [::]:7654: use of closed network connection
+[github.com/flipped-aurora/gin-vue-admin/server]2023/03/13 - 01:45:39.001	[31merror[0m	/pine/gvmnote/server/core/server.go:43	accept tcp [::]:7654: use of closed network connection
+[github.com/flipped-aurora/gin-vue-admin/server]2023/03/13 - 02:15:40.264	[31merror[0m	/pine/gvmnote/server/core/server.go:43	accept tcp [::]:7654: use of closed network connection
+[github.com/flipped-aurora/gin-vue-admin/server]2023/03/13 - 03:00:01.704	[31merror[0m	/pine/gvmnote/server/core/server.go:43	accept tcp [::]:7654: use of closed network connection

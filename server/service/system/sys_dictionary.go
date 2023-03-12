@@ -129,9 +129,8 @@ func (dictionaryService *DictionaryService) ChangeStatus(req system.SysDictionar
 //@return: err error, sysDictionary model.SysDictionary
 
 func (dictionaryService *DictionaryService) GetSysDictionary(Code string, Id uint, status int) (sysDictionary system.SysDictionary, err error) {
-	var flag = 1
 
-	err = global.GVA_DB.Where("(code = ? OR id = ?) and status = ?", Code, Id, flag).Preload("SysDictionaryDetails", "status = ?", true).First(&sysDictionary).Error
+	err = global.GVA_DB.Where("(code = ? OR id = ?) ", Code, Id).Preload("SysDictionaryDetails", "status = ?", true).First(&sysDictionary).Error
 	return
 }
 

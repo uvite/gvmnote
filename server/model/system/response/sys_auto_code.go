@@ -1,11 +1,15 @@
 package response
 
+import "time"
+
 type Db struct {
 	Database string `json:"database" gorm:"column:database"`
 }
 
 type Table struct {
-	TableName string `json:"tableName" gorm:"column:table_name"`
+	TableName  string    `json:"table_name" gorm:"column:table_name"`
+	TableComment    string    `json:"table_comment" gorm:"column:table_comment"`
+	CreateTime time.Time `json:"create_time" gorm:"column:create_time"`
 }
 
 type Column struct {

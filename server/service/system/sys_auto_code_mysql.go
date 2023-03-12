@@ -28,7 +28,7 @@ func (s *autoCodeMysql) GetDB(businessDB string) (data []response.Db, err error)
 // Author [SliverHorn](https://github.com/SliverHorn)
 func (s *autoCodeMysql) GetTables(businessDB string, dbName string) (data []response.Table, err error) {
 	var entities []response.Table
-	sql := `select table_name as table_name from information_schema.tables where table_schema = ?`
+	sql := `select table_name as table_name ,table_comment as table_comment,create_time from information_schema.tables where table_schema = ?`
 	if businessDB == "" {
 		err = global.GVA_DB.Raw(sql, dbName).Scan(&entities).Error
 	} else {
