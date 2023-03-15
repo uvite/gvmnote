@@ -2,6 +2,7 @@ package system
 
 import (
 	"errors"
+	"github.com/flipped-aurora/gin-vue-admin/server/model/other"
 	"strconv"
 
 	"github.com/flipped-aurora/gin-vue-admin/server/global"
@@ -132,7 +133,7 @@ func (authorityService *AuthorityService) DeleteAuthority(auth *system.SysAuthor
 			return
 		}
 	}
-	err = global.GVA_DB.Delete(&[]system.SysUserAuthority{}, "sys_authority_authority_id = ?", auth.AuthorityId).Error
+	err = global.GVA_DB.Delete(&[]system.SysUserAuthority{}, "role_id = ?", auth.AuthorityId).Error
 	if err != nil {
 		return
 	}
@@ -197,8 +198,8 @@ func (authorityService *AuthorityService) SetDataAuthority(auth system.SysAuthor
 //@return: error
 
 func (authorityService *AuthorityService) SetMenuAuthority(auth *system.SysAuthority) error {
-	var s system.SysAuthority
-	global.GVA_DB.Preload("SysBaseMenus").First(&s, "authority_id = ?", auth.AuthorityId)
+	var s other.SystemRole
+	global.GVA_DB.Preload("SysBaseMenus").First(&s, "id = ?", auth.AuthorityId)
 	err := global.GVA_DB.Model(&s).Association("SysBaseMenus").Replace(&auth.SysBaseMenus)
 	return err
 }

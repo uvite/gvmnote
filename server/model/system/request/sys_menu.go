@@ -8,7 +8,7 @@ import (
 // Add menu authority info structure
 type AddMenuAuthorityInfo struct {
 	Menus       []system.SysBaseMenu `json:"menus"`
-	AuthorityId uint                 `json:"authorityId"` // 角色ID
+	AuthorityId uint                 `json:"role_id"` // 角色ID
 }
 
 func DefaultMenu() []system.SysBaseMenu {
@@ -22,7 +22,7 @@ func DefaultMenu() []system.SysBaseMenu {
 
 		Meta: system.Meta{
 			Title: "仪表盘",
-			Icon:      "setting",
+			Icon:  "setting",
 		},
 	}}
 }

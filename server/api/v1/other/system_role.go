@@ -2,13 +2,13 @@ package other
 
 import (
 	"github.com/flipped-aurora/gin-vue-admin/server/global"
-    "github.com/flipped-aurora/gin-vue-admin/server/model/other"
-    "github.com/flipped-aurora/gin-vue-admin/server/model/common/request"
-    otherReq "github.com/flipped-aurora/gin-vue-admin/server/model/other/request"
-    "github.com/flipped-aurora/gin-vue-admin/server/model/common/response"
-    "github.com/flipped-aurora/gin-vue-admin/server/service"
-    "github.com/gin-gonic/gin"
-    "go.uber.org/zap"
+	"github.com/flipped-aurora/gin-vue-admin/server/model/common/request"
+	"github.com/flipped-aurora/gin-vue-admin/server/model/common/response"
+	"github.com/flipped-aurora/gin-vue-admin/server/model/other"
+	otherReq "github.com/flipped-aurora/gin-vue-admin/server/model/other/request"
+	"github.com/flipped-aurora/gin-vue-admin/server/service"
+	"github.com/gin-gonic/gin"
+	"go.uber.org/zap"
 )
 
 type SystemRoleApi struct {
@@ -163,5 +163,19 @@ func (systemRoleApi *SystemRoleApi) GetSystemRoleList(c *gin.Context) {
             Page:     pageInfo.Page,
             PageSize: pageInfo.PageSize,
         }, "获取成功", c)
+    }
+}
+func (systemRoleApi *SystemRoleApi) GetSystemRoleAll(c *gin.Context) {
+	var pageInfo otherReq.SystemRoleSearch
+	err := c.ShouldBindQuery(&pageInfo)
+	if err != nil {
+		response.FailWithMessage(err.Error(), c)
+		return
+	}
+	if list, _, err := systemRoleService.GetSystemRoleInfoList(pageInfo); err != nil {
+	    global.GVA_LOG.Error("获取失败!", zap.Error(err))
+        response.FailWithMessage("获取失败", c)
+    } else {
+        response.OkWithDetailed(list ,"获取成功", c)
     }
 }

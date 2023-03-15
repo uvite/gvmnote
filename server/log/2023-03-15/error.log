@@ -1,0 +1,1 @@
+[github.com/flipped-aurora/gin-vue-admin/server]2023/03/15 - 23:45:24.815	[31merror[0m	/pine/gvmnote/server/core/server.go:43	accept tcp [::]:7654: use of closed network connection

@@ -26,7 +26,7 @@ func (menuService *MenuService) getMenuTreeMap(role_id uint) (treeMap map[int64]
 
 	var SysRoleMenus []system.SysRoleMenu
 
-	err = global.GVA_DB.Where("role_id = ?", role_id).Find(&SysRoleMenus).Error
+	err = global.GVA_DB.Where("system_role_id = ?", role_id).Find(&SysRoleMenus).Error
 	if err != nil {
 		return
 	}
@@ -194,7 +194,7 @@ func (menuService *MenuService) AddMenuAuthority(menus []system.SysBaseMenu, aut
 func (menuService *MenuService) GetMenuAuthority(info *request.GetAuthorityId) (menus []system.SysMenu, err error) {
 	var baseMenu []system.SysBaseMenu
 	var SysRoleMenus []system.SysRoleMenu
-	err = global.GVA_DB.Where("sys_authority_authority_id = ?", info.AuthorityId).Find(&SysRoleMenus).Error
+	err = global.GVA_DB.Where("system_role_id = ?", info.AuthorityId).Find(&SysRoleMenus).Error
 	if err != nil {
 		return
 	}
@@ -225,7 +225,7 @@ func (menuService *MenuService) GetMenuAuthority(info *request.GetAuthorityId) (
 //	Author [SliverHorn](https://github.com/SliverHorn)
 func (menuService *MenuService) UserAuthorityDefaultRouter(user *system.SysUser) {
 	var menuIds []string
-	err := global.GVA_DB.Model(&system.SysRoleMenu{}).Where("role_id = ?", user.AuthorityId).Pluck("menu_id", &menuIds).Error
+	err := global.GVA_DB.Model(&system.SysRoleMenu{}).Where("system_role_id = ?", user.AuthorityId).Pluck("sys_base_menu_id", &menuIds).Error
 	if err != nil {
 		return
 	}
